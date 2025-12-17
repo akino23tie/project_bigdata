@@ -41,7 +41,7 @@
     </section>
 
     <section id="problem">
-      <div class="container">
+      <div class="container" >
         <h2 class="section-title">Latar Belakang & Masalah</h2>
         <p class="subtitle">Mengapa sistem monitoring otomatis diperlukan untuk lahan gambut?</p>
         <div class="grid-3">
@@ -64,38 +64,41 @@
     <section id="pipeline" class="bg-light">
       <div class="container">
         <h2 class="section-title">Arsitektur Pipeline Big Data</h2>
-        <p class="subtitle">Desain solusi pengelolaan data dari hulu ke hilir (End-to-End).</p>
+        <p class="subtitle" style="max-width: 800px; margin: 0 auto 40px auto; line-height: 1.6;">
+          Pipeline Big Data merupakan serangkaian tahapan untuk mengalirkan data dari sumber hingga menjadi informasi. 
+          Alur ini mencakup <strong>Ingestion, Processing, Storage,</strong> dan <strong>Visualization</strong> 
+          untuk memantau kondisi lahan gambut.
+        </p>
 
         <div class="pipeline-flow">
           <div class="step-card">
-            <div class="icon-box"><i class="fas fa-satellite-dish"></i></div>
-            <h4>1. Data Ingestion</h4>
-            <p>Apache Kafka</p>
-            <small>Mengumpulkan data streaming dari sensor IoT (CSV/JSON) secara real-time.</small>
+            <div class="icon-box"><i class="fab fa-python"></i></div> <h4>1. Data Ingestion</h4>
+            <p style="font-weight: bold; color: var(--primary);">Google Colab (Python)</p>
+            <small>Script simulasi mengumpulkan data <strong>Sensor Suhu</strong> & <strong>Cahaya</strong> (simulasi IoT) dalam format CSV.</small>
           </div>
+          
           <div class="arrow"><i class="fas fa-chevron-right"></i></div>
 
           <div class="step-card">
-            <div class="icon-box"><i class="fas fa-microchip"></i></div>
-            <h4>2. Preprocessing</h4>
-            <p>Apache Spark Streaming</p>
-            <small>Pembersihan data (Cleaning), penanganan missing value, dan normalisasi format.</small>
+            <div class="icon-box"><i class="fas fa-filter"></i></div> <h4>2. Data Processing</h4>
+            <p style="font-weight: bold; color: var(--primary);">Python (Pandas)</p>
+            <small>Proses <em>cleaning</em> data, penanganan <em>missing value</em>, dan standarisasi format sebelum disimpan.</small>
           </div>
+
           <div class="arrow"><i class="fas fa-chevron-right"></i></div>
 
           <div class="step-card">
-            <div class="icon-box"><i class="fas fa-database"></i></div>
-            <h4>3. Storage</h4>
-            <p>HDFS & HBase</p>
-            <small>Penyimpanan data terdistribusi yang efisien untuk akses baca/tulis cepat (NoSQL).</small>
+            <div class="icon-box"><i class="fas fa-database"></i></div> <h4>3. Data Storage</h4>
+            <p style="font-weight: bold; color: var(--primary);">MongoDB</p>
+            <small>Menyimpan data hasil olahan ke dalam database NoSQL (Document Store) agar siap diakses secara fleksibel.</small>
           </div>
+
           <div class="arrow"><i class="fas fa-chevron-right"></i></div>
 
           <div class="step-card">
-            <div class="icon-box"><i class="fas fa-chart-line"></i></div>
-            <h4>4. Visualization</h4>
-            <p>Tableau Public</p>
-            <small>Dashboard interaktif sebagai antarmuka Early Warning System (EWS).</small>
+            <div class="icon-box"><i class="fas fa-chart-bar"></i></div> <h4>4. Data Visualization</h4>
+            <p style="font-weight: bold; color: var(--primary);">Tableau</p>
+            <small>Dashboard interaktif menampilkan grafik tren suhu dan intensitas cahaya sebagai sistem peringatan dini.</small>
           </div>
         </div>
       </div>
@@ -156,7 +159,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section id="modeling" class="bg-light">
         <div class="confusion-matrix-area">
           <div class="cm-content">
             <h3>Kategori Klasifikasi:</h3>

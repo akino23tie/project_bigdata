@@ -14,7 +14,6 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#pipeline">Pipeline</a></li>
         <li><a href="#dataset">Dataset</a></li>
-        <li><a href="#modeling">Modeling</a></li>
         <li><a href="#tableau">Visualisasi</a></li>
         <li><a href="#simulation">Simulasi</a></li>
         <li><a href="#team">Tim</a></li>
@@ -157,36 +156,15 @@
         </div>
       </div>
     </section>
-
-    <section id="modeling" class="bg-light">
-      <div class="container">
-        <h2 class="section-title">Klasifikasi Status Lahan</h2>
-        <p class="subtitle">Model Machine Learning dilatih untuk mengenali pola data sensor dan menentukan 3 kategori status.</p>
-
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <h1>92%</h1>
-            <p>Accuracy</p>
-          </div>
-          <div class="metric-card">
-            <h1>89%</h1>
-            <p>Precision</p>
-          </div>
-          <div class="metric-card">
-            <h1>94%</h1>
-            <p>Recall</p>
-          </div>
-        </div>
-
+    <section>
         <div class="confusion-matrix-area">
           <div class="cm-content">
-            <h3>Kategori Klasifikasi (Output Model):</h3>
+            <h3>Kategori Klasifikasi:</h3>
             <ul style="text-align: left; display: inline-block">
               <li><span class="dot safe"></span> <strong>Normal:</strong> Parameter stabil (Air ~-10cm, Suhu < 30°C).</li>
               <li><span class="dot danger"></span> <strong>Waspada Kebakaran:</strong> Air surut drastis (< -40cm), Suhu tinggi (> 30°C), Tanah kering.</li>
               <li><span class="dot warn"></span> <strong>Waspada Banjir:</strong> Muka air naik positif (> 0cm), Tanah jenuh air (> 80%).</li>
             </ul>
-            <p style="margin-top: 15px">Model mendukung pengambilan keputusan berbasis data (Data-Driven Decision Making).</p>
           </div>
         </div>
       </div>
@@ -250,8 +228,8 @@
 
     <section id="simulation">
       <div class="container">
-        <h2 class="section-title">Simulasi Prediksi Real-Time</h2>
-        <p class="subtitle">Uji coba logika model EWS dengan parameter sensor manual.</p>
+        <h2 class="section-title">Simulasi Prediksi</h2>
+        <p class="subtitle">Uji coba logika EWS dengan parameter sensor manual.</p>
 
         <div class="sim-container">
           <div class="sim-card input-card">

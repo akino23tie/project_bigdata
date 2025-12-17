@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monitoring & EWS Lahan Gambut - Kelompok 4</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">Gambut<span style="color: var(--accent)">Monitoring</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><a href="#dataset">Dataset</a></li>
+        <li><a href="#modeling">Modeling</a></li>
+        <li><a href="#tableau">Visualisasi</a></li>
+        <li><a href="#simulation">Simulasi</a></li>
+        <li><a href="#team">Tim</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <span class="tagline">EARLY WARNING SYSTEM (EWS)</span>
+        <h1>
+          Monitoring Cerdas Lahan Gambut <br />
+          Berbasis Big Data
+        </h1>
+        <p>Implementasi pipeline big data end-to-end untuk deteksi dini potensi kebakaran hutan dan banjir pada ekosistem gambut menggunakan sensor IoT.</p>
+        <div class="hero-buttons">
+          <a href="#tableau" class="btn-primary">Lihat Dashboard</a>
+          <a href="#simulation" class="btn-secondary">Simulasi EWS</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container">
+        <h2 class="section-title">Latar Belakang & Masalah</h2>
+        <p class="subtitle">Mengapa sistem monitoring otomatis diperlukan untuk lahan gambut?</p>
+        <div class="grid-3">
+          <div class="text-card">
+            <h3><i class="fas fa-fire"></i> Urgensi Bencana</h3>
+            <p>Lahan gambut rentan terhadap dua kondisi ekstrem: <strong>Kebakaran</strong> saat kering (suhu tinggi, kelembaban rendah) dan <strong>Banjir</strong> saat musim hujan (muka air naik).</p>
+          </div>
+          <div class="text-card">
+            <h3><i class="fas fa-database"></i> Tantangan 5V Big Data</h3>
+            <p>Sensor mengirim data secara kontinu (Velocity) dengan jumlah besar (Volume), yang sulit diolah secara manual untuk mendapatkan keputusan cepat (Value).</p>
+          </div>
+          <div class="text-card">
+            <h3><i class="fas fa-cogs"></i> Otomasi EWS</h3>
+            <p>Diperlukan sistem yang mampu mengolah data sensor (Muka air, Suhu, Kelembaban, Cahaya) menjadi peringatan dini status "Normal", "Waspada Kebakaran", atau "Waspada Banjir".</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipeline" class="bg-light">
+      <div class="container">
+        <h2 class="section-title">Arsitektur Pipeline Big Data</h2>
+        <p class="subtitle">Desain solusi pengelolaan data dari hulu ke hilir (End-to-End).</p>
+
+        <div class="pipeline-flow">
+          <div class="step-card">
+            <div class="icon-box"><i class="fas fa-satellite-dish"></i></div>
+            <h4>1. Data Ingestion</h4>
+            <p>Apache Kafka</p>
+            <small>Mengumpulkan data streaming dari sensor IoT (CSV/JSON) secara real-time.</small>
+          </div>
+          <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+
+          <div class="step-card">
+            <div class="icon-box"><i class="fas fa-microchip"></i></div>
+            <h4>2. Preprocessing</h4>
+            <p>Apache Spark Streaming</p>
+            <small>Pembersihan data (Cleaning), penanganan missing value, dan normalisasi format.</small>
+          </div>
+          <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+
+          <div class="step-card">
+            <div class="icon-box"><i class="fas fa-database"></i></div>
+            <h4>3. Storage</h4>
+            <p>HDFS & HBase</p>
+            <small>Penyimpanan data terdistribusi yang efisien untuk akses baca/tulis cepat (NoSQL).</small>
+          </div>
+          <div class="arrow"><i class="fas fa-chevron-right"></i></div>
+
+          <div class="step-card">
+            <div class="icon-box"><i class="fas fa-chart-line"></i></div>
+            <h4>4. Visualization</h4>
+            <p>Tableau Public</p>
+            <small>Dashboard interaktif sebagai antarmuka Early Warning System (EWS).</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dataset">
+      <div class="container">
+        <h2 class="section-title">Eksplorasi Dataset</h2>
+        <div class="dataset-layout">
+          <div class="dataset-info">
+            <h3>4 Variabel Kunci Sensor</h3>
+            <ul class="feature-list">
+              <li><strong>Ketinggian Air (cm):</strong> Indikator utama banjir (jika > 0) atau kekeringan ekstrem (jika < -50).</li>
+              <li><strong>Kelembaban Tanah (%):</strong> Parameter krusial untuk potensi kebakaran (kritis jika < 40%).</li>
+              <li><strong>Suhu Udara (°C):</strong> Pemicu hotspot kebakaran (kritis jika > 30°C).</li>
+              <li><strong>Intensitas Cahaya (Lux):</strong> Indikator kondisi cuaca (cerah/mendung) yang mempengaruhi penguapan.</li>
+            </ul>
+          </div>
+          <div class="dataset-preview">
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Waktu Record</th>
+                    <th>Air (cm)</th>
+                    <th>Moisture (%)</th>
+                    <th>Suhu (°C)</th>
+                    <th>Status (Label)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>2025-06-16 22:00</td>
+                    <td>0.51</td>
+                    <td>86.98</td>
+                    <td>27.95</td>
+                    <td><span class="badge badge-warn">Waspada Banjir</span></td>
+                  </tr>
+                  <tr>
+                    <td>2025-06-26 04:00</td>
+                    <td>-61.43</td>
+                    <td>27.25</td>
+                    <td>34.60</td>
+                    <td><span class="badge badge-danger">Waspada Kebakaran</span></td>
+                  </tr>
+                  <tr>
+                    <td>2025-06-04 00:55</td>
+                    <td>-11.35</td>
+                    <td>34.70</td>
+                    <td>27.90</td>
+                    <td><span class="badge badge-safe">Normal</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: #666">*Sampel data sensor lahan gambut yang telah dibersihkan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="modeling" class="bg-light">
+      <div class="container">
+        <h2 class="section-title">Klasifikasi Status Lahan</h2>
+        <p class="subtitle">Model Machine Learning dilatih untuk mengenali pola data sensor dan menentukan 3 kategori status.</p>
+
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <h1>92%</h1>
+            <p>Accuracy</p>
+          </div>
+          <div class="metric-card">
+            <h1>89%</h1>
+            <p>Precision</p>
+          </div>
+          <div class="metric-card">
+            <h1>94%</h1>
+            <p>Recall</p>
+          </div>
+        </div>
+
+        <div class="confusion-matrix-area">
+          <div class="cm-content">
+            <h3>Kategori Klasifikasi (Output Model):</h3>
+            <ul style="text-align: left; display: inline-block">
+              <li><span class="dot safe"></span> <strong>Normal:</strong> Parameter stabil (Air ~-10cm, Suhu < 30°C).</li>
+              <li><span class="dot danger"></span> <strong>Waspada Kebakaran:</strong> Air surut drastis (< -40cm), Suhu tinggi (> 30°C), Tanah kering.</li>
+              <li><span class="dot warn"></span> <strong>Waspada Banjir:</strong> Muka air naik positif (> 0cm), Tanah jenuh air (> 80%).</li>
+            </ul>
+            <p style="margin-top: 15px">Model mendukung pengambilan keputusan berbasis data (Data-Driven Decision Making).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tableau">
+      <div class="container">
+        <h2 class="section-title">Dashboard Visualisasi (EWS)</h2>
+        <p class="subtitle">"Narasi Kesehatan Lahan" - Memvisualisasikan apa yang terjadi saat ini dan tren historis.</p>
+
+        <div class="tableau-wrapper" style="width: 100%; border: none; padding: 0; background: white; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); border-radius: 8px; overflow: hidden">
+          <div class="tableauPlaceholder" id="viz1766008620370" style="position: relative">
+            <noscript
+              ><a href="#"><img alt="Dashboard 1 " src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;pr&#47;project_bigdata_17660081144100&#47;Dashboard1&#47;1_rss.png" style="border: none" /></a></noscript
+            ><object class="tableauViz" style="display: none">
+              <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+              <param name="embed_code_version" value="3" />
+              <param name="site_root" value="" />
+              <param name="name" value="project_bigdata_17660081144100&#47;Dashboard1" />
+              <param name="tabs" value="no" />
+              <param name="toolbar" value="yes" />
+              <param name="static_image" value="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;pr&#47;project_bigdata_17660081144100&#47;Dashboard1&#47;1.png" />
+              <param name="animate_transition" value="yes" />
+              <param name="display_static_image" value="yes" />
+              <param name="display_spinner" value="yes" />
+              <param name="display_overlay" value="yes" />
+              <param name="display_count" value="yes" />
+              <param name="language" value="en-US" />
+              <param name="filter" value="publish=yes" />
+            </object>
+          </div>
+          <script type="text/javascript">
+            var divElement = document.getElementById("viz1766008620370");
+            var vizElement = divElement.getElementsByTagName("object")[0];
+            if (divElement.offsetWidth > 800) {
+              vizElement.style.width = "1000px";
+              vizElement.style.height = "827px";
+            } else if (divElement.offsetWidth > 500) {
+              vizElement.style.width = "1000px";
+              vizElement.style.height = "827px";
+            } else {
+              vizElement.style.width = "100%";
+              vizElement.style.height = "1477px";
+            }
+            var scriptElement = document.createElement("script");
+            scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+          </script>
+        </div>
+
+        <div class="insight-box">
+          <h3>💡 Insight Utama:</h3>
+          <ul>
+            <li><strong>Pola Kebakaran:</strong> Terjadi korelasi kuat antara penurunan muka air drastis dengan lonjakan suhu di siang hari.</li>
+            <li><strong>Pola Banjir:</strong> Kelembaban tanah mencapai titik jenuh (90%+) mendahului kenaikan level air positif.</li>
+            <li><strong>Storytelling:</strong> Dashboard menjawab "Apa yang terjadi saat ini?" menggunakan indikator Gauge dan Heatmap.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulation">
+      <div class="container">
+        <h2 class="section-title">Simulasi Prediksi Real-Time</h2>
+        <p class="subtitle">Uji coba logika model EWS dengan parameter sensor manual.</p>
+
+        <div class="sim-container">
+          <div class="sim-card input-card">
+            <h3><i class="fas fa-sliders-h"></i> Input Parameter Sensor</h3>
+            <form id="predictionForm">
+              <div class="form-group">
+                <label for="waterLevel">Ketinggian Air (cm)</label>
+                <input type="number" id="waterLevel" step="0.01" placeholder="Contoh: -10 (Normal) atau 5 (Banjir)" required />
+                <small>Range: -80 s/d 20 cm</small>
+              </div>
+
+              <div class="form-group">
+                <label for="soilMoisture">Kelembaban Tanah (%)</label>
+                <input type="number" id="soilMoisture" step="0.01" placeholder="Contoh: 35" required />
+              </div>
+
+              <div class="form-group">
+                <label for="temperature">Suhu Udara (°C)</label>
+                <input type="number" id="temperature" step="0.1" placeholder="Contoh: 32" required />
+              </div>
+
+              <button type="submit" class="btn-predict"><i class="fas fa-search"></i> Cek Status Kondisi</button>
+            </form>
+          </div>
+
+          <div class="sim-card result-card" id="resultCard" style="display: none">
+            <h3>Hasil Analisis Sistem</h3>
+            <div class="result-content">
+              <div class="result-icon-box">
+                <i id="resultIcon" class="fas fa-check-circle"></i>
+              </div>
+              <h2 id="resultLabel">NORMAL</h2>
+              <p id="resultDesc">Kondisi lingkungan aman terkendali.</p>
+
+              <hr />
+
+              <div class="result-details">
+                <p><strong>Input Data:</strong></p>
+                <ul>
+                  <li>Water Level: <span id="resWater">0</span> cm</li>
+                  <li>Moisture: <span id="resMoist">0</span> %</li>
+                  <li>Temp: <span id="resTemp">0</span> °C</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="bg-dark">
+      <div class="container">
+        <h2 class="section-title text-white">Tim Pengembang</h2>
+        <div class="grid-3 team-container">
+          <div class="team-card">
+            <div class="profile-img">
+              <img src="https://lh3.googleusercontent.com/a/ACg8ocIsxg6HIRK3B0sUzGd3r2VgCTETpxsn0h0VIDp721lj8EkdPugN=s484-c-no" alt="Asjad" />
+            </div>
+            <div class="team-info">
+              <h4>Asjad Thifal Akino</h4>
+              <p>2355301023</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="profile-img">
+              <img
+                src="https://lh3.googleusercontent.com/a-/ALV-UjVuOVMhlFgs0dIyN8xOpaWxDRCs0ifgu3uPO5ySnilBBuHF3eTN4z0nsd4XaII3MrMbJEyfyaKfMe_RRqwfeimqCf4O_SH1QTpHK9K8VZ4H4wy5nYef0BRYpCbXHMNQbzRFG4wgRTKw-buBXCgZxPpqc00NCTQfj1PJef9e_OGgD8y8TcEgE90NL8QU9_4iD0fTsTlKSbfBizHSgOR_upGeXChg2aH9zxkxMn2OPXC5E1N2nyRPAj0B_QzcrEi9lfmwHkgBMz-KLCbLq7CHK80NV0mhNMkNsEpuDrJkhxcbbY6J26sgVYlZKsmnVevVr8cFZDJbxH1wnw5iVejam4dxo5kr7TWnQxiFEMcK16VOQZssnjB1RwrvnB7k6s6EXt5vMMrN1OjKIEh8oKzy2DYVQfd7U_er6e5Dt-URsyt_Kjw9-EwozuIgnuwLE4vFbSCXcmkaBsClE4pZltgakYJl3tkLjo-iMlz7u7TPoenP2wHOkmpZQLroZFhzNU_vuEsx4O4nS2x4sBAcHNbG2-j0bPEpuQN2AOyjc3-r_BRJ3P28rD8qBtUKA6HAGOHjRT-mR8hzic2HJZ7EuahiH64SD_tvnAxkAUyuVzqqMCItd9X6xPoLDZT7hTHamPTDuje_ImTW6G8XqkLsJXMKxYst9I3zE_wsrIu56-iKHFGoERxODN1TOqVuxZTeDAAXG7orpFYy3fmZSZRTho_04LCXmVdt8Ju5HERsMwUtsfZiVyBmCyn6zqglH2RRAmeHfvc7AOV7cXX8vyAhJWxWU2jyp8lCA7LQsF4we3Mg6YJKbnzCjs6P6cj-gEX7ipRtR5LFXRHre2nIxS1nRy540sQm-pWEmY6vvP2qmBwXCGZto8NZoxsaJdNmQpognMnxLSU1ZG0uYDRzcdn_j8fKizQPPtFFRpgHQVyJIa2wubX5F2Cq-wuyXbsLVCvv6iJ20ZuEo0kM7mohPB0vLg_nJ45MaX6oCgPiGexXIkaVF0GYktk3BVoOMd-zehnsiAF8hm48fAh1hBnXagFgtMmW4f8l_xFWy2IyT7qavyd2JCr3d3qwLMuODjA=s360-c-no"
+                alt="Faiz"
+              />
+            </div>
+            <div class="team-info">
+              <h4>Muhammad Faiz</h4>
+              <p>2355301130</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="profile-img">
+              <img src="https://ui-avatars.com/api/?name=Fajar+Raffael&background=random&size=128" alt="Fajar" />
+            </div>
+            <div class="team-info">
+              <h4>M. Fajar Raffael</h4>
+              <p>2355301131</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="profile-img">
+              <img src="https://ui-avatars.com/api/?name=Muhammad+Ilham&background=random&size=128" alt="Ilham" />
+            </div>
+            <div class="team-info">
+              <h4>Muhammad Ilham</h4>
+              <p>2355301135</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Project Big Data - Monitoring Lahan Gambut | Politeknik Caltex Riau</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

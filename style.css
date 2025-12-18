@@ -186,11 +186,11 @@ nav {
 /* Dataset Table */
 .dataset-layout {
   display: flex;
-  gap: 40px;
+  gap: 0px;
   flex-wrap: wrap;
 }
 .dataset-info {
-  flex: 1;
+  flex: 0.92.5;
 }
 .dataset-preview {
   flex: 1.5;
@@ -471,7 +471,7 @@ footer {
 }
 
 /* --- TEAM SECTION UPDATE --- */
-/* ========================================= UPDATE STYLE TEAM (FORCE 4 SEJAJAR) Ganti bagian .team-container yang tadi dengan ini ========================================= */ 
+/* ========================================= UPDATE STYLE TEAM (FORCE 4 SEJAJAR) Ganti bagian .team-container yang tadi dengan ini ========================================= */
 
 .team-container {
   display: grid;
